@@ -1,0 +1,34 @@
+<%- include header %>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="sub_wrap">
+                    <% if(!token && !error){ %>
+                    <h1>Send File</h1>
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div id="in_form_wrap">
+                            <span>Click to send files upto 1GB</span>
+                            <input type="file" name="files" id="files" multiple>
+                            <input type="hidden" name="removed_file">
+                        </div>
+                    </form>
+                    <% } %>
+                    <% if(token && !error){ %>
+                    <input type="text" name="download_link" value="<%= token %>" class="form-control">
+                    <button id="copy_btn" class="btn btn-success">Copy</button>
+                    <% if(expiry_count){ %>
+                        <div>Download link will expire after <%= expiry_count %> download or <%= expiry_time %></div>
+                    <% }else{ %>
+                        <div>Download link will expire after 1 download or <%= expiry_time %></div>
+                    <% } %>
+                    <a href="/">Send Another File</a>
+                    <% } %>
+                    <% if(error){ %>
+                        <h3 class="text-danger"><%= error %></h3>
+                        <a href="/">Send File Again</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+<%- include footer %>

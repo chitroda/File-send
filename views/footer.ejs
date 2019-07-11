@@ -1,0 +1,33 @@
+<script src="/public/js/script.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($){
+		/*$('input[name=files]').change(function(e){
+			//e.preventDefault();
+			if($('input[name=files]').val()){
+				$('body form').append('<input type="submit" name="submit" class="btn btn-primary" value="Upload" style="margin-top: 10px;">');
+			}
+		});*/
+		$('body').on('click', '#get_files', function(){
+			var parted_url = (window.location.pathname).split('/');
+			var url_val = parted_url[2]+'/'+parted_url[3];
+			window.open('/download-files/'+url_val, '_self');
+			/*$.ajax({
+				type: 'POST',
+				url: '/download',
+				data: {context_tkn: url_val},
+				success: function(data){
+					//window.open('/download-files', '_blank');
+				},
+				error: function(err){
+					console.log(err);
+				}
+			});*/
+		});
+		$('#copy_btn').on('click', function(){
+			var text = $('input[name=download_link]').val();
+			$('input[name=download_link]').select();
+			document.execCommand('copy');
+			$(this).text('Copied!');
+		});
+	});
+</script>

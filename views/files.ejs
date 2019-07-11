@@ -1,0 +1,22 @@
+<%- include header %>
+<div class="container">
+    <div class="sub_wrap">
+        <div class="row">
+            <div class="col">
+                    <% if(file_name){ %>
+                        <% for(var i=0; i < file_name.length; i++){ %>
+                        <h4><i class="far fa-file-alt"></i> <%= file_name[i] %></h4>
+                        <% } %>
+                    <% } %>
+                    <% if(expiry_count){ %>
+                    <p class="text-danger">Expires after <%= expiry_count %> download or <%= expiry_time %></p>
+                    <% }else{ %>
+                    <p class="text-danger">Expires after 1 download or <%= expiry_time %></p>
+                    <% } %>
+                <button class="btn btn-danger" id="get_files">Download File</button>
+            </div>
+        </div>
+        <a href="/">Send more files!</a>
+    </div>
+</div>
+<%- include footer %>
