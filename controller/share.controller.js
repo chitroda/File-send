@@ -261,9 +261,6 @@ exports.download_files = (req,res)  =>  {
                 });
                 fsExtra.remove(dir_name+'.zip', (err) => {
                     if(err) throw err;
-                    model.findOneAndDelete(id, (error) => {
-                        if(error) throw error;
-                    });
                 });
             }
         }
